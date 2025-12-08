@@ -3,7 +3,7 @@
 #' @param forcing numeric vector with the forcing (the vorticity)
 #' @param lon,lat numeric vectors with the locations of the forcing.
 #'
-#' @useDynLib shceof hwsssp_
+#' @useDynLib fishr hwsssp_
 #' @export
 solve_poisson <- function(forcing, lon, lat) {
   data <- data.table::data.table(forcing = forcing, lon = lon, lat = lat)
