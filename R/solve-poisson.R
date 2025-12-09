@@ -11,8 +11,8 @@ solve_poisson <- function(forcing, lon, lat) {
 
   pi <- 4 * atan(1)
 
-  colat <- (90 - forcing$rowdims$lat) * pi / 180
-  lon <- forcing$coldims$lon * pi / 180
+  colat <- (90 - lat) * pi / 180
+  lon <- lon * pi / 180
 
   M <- length(colat) - 1L
   N <- length(lon) - 1L
