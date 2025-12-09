@@ -17,3 +17,5 @@
   data.m[cbind(data[["row__"]], data[["col__"]])] <- data[[value.var]]
   return(list(matrix = data.m, coldims = coldims, rowdims = rowdims))
 }
+
+.datatable.aware <- TRUE
