@@ -6,12 +6,10 @@
 #' @useDynLib fishr hwsssp_
 #' @export
 solve_poisson <- function(forcing, lon, lat) {
-  data <- data.table::data.table(forcing = forcing, lon = lon, lat = lat)
+  o <- order(lat, lon)
+  f <- matrix(forcing[o], nrow = length(unique(x)), byrow = FALSE)
 
-  forcing <- .tidy2matrix(data, lat ~ lon, value.var = "forcing")
   pi <- 4 * atan(1)
-
-  f <- forcing$matrix
 
   colat <- (90 - forcing$rowdims$lat) * pi / 180
   lon <- forcing$coldims$lon * pi / 180
@@ -92,10 +90,5 @@ solve_poisson <- function(forcing, lon, lat) {
     return(NULL)
   }
 
-  forcing$matrix[,] <- result[["F"]]
-  data.table::CJ(
-    lon = forcing$coldims$lon,
-    lat = forcing$rowdims$lat,
-    sorted = FALSE
-  )[, value := c(forcing$matrix)][]
+  c(result[["F"]])[order(o)]
 }
