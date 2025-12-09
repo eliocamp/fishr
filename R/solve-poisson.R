@@ -7,7 +7,7 @@
 #' @export
 solve_poisson <- function(forcing, lon, lat) {
   o <- order(lat, lon)
-  f <- matrix(forcing[o], nrow = length(unique(lon)), byrow = FALSE)
+  forcing <- matrix(forcing[o], nrow = length(unique(lon)), byrow = FALSE)
 
   pi <- 4 * atan(1)
 
@@ -53,7 +53,7 @@ solve_poisson <- function(forcing, lon, lat) {
   # lalbda = 0 to get poisson equation
   ELMBDA <- as.single(0.)
 
-  f <- as.single(f)
+  forcing <- as.single(forcing)
 
   IDIMF <- M + 1L
 
@@ -78,7 +78,7 @@ solve_poisson <- function(forcing, lon, lat) {
     BDPS,
     BDPF,
     ELMBDA,
-    F = f,
+    F = forcing,
     IDIMF,
     PERTRB,
     IERROR = IERROR,
