@@ -7,7 +7,7 @@
 #' @export
 solve_poisson <- function(forcing, lon, lat) {
   o <- order(lat, lon)
-  f <- matrix(forcing[o], nrow = length(unique(x)), byrow = FALSE)
+  f <- matrix(forcing[o], nrow = length(unique(lon)), byrow = FALSE)
 
   pi <- 4 * atan(1)
 
