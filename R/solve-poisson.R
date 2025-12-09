@@ -55,7 +55,7 @@ solve_poisson <- function(forcing, lon, lat) {
   # lalbda = 0 to get poisson equation
   ELMBDA <- as.single(0.)
 
-  forcing <- as.single(forcing)
+  f <- as.single(f)
 
   IDIMF <- M + 1L
 
@@ -80,7 +80,7 @@ solve_poisson <- function(forcing, lon, lat) {
     BDPS,
     BDPF,
     ELMBDA,
-    F = forcing,
+    F = f,
     IDIMF,
     PERTRB,
     IERROR = IERROR,
